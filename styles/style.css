@@ -1,0 +1,298 @@
+body{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 48px;
+  background-color: #bdbdbd ;
+  margin: 0px 0px 0px 0px;
+}
+
+.header{
+  width: 100%;
+  background-color: #2c2c2c;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hmenu button{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 36px;
+}
+
+.hmenu{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 30px;
+}
+
+.hlogo{
+  width: 300px;
+  height: 114px;
+}
+
+.hmenu__box{
+  font-size: 36px;
+  border: none;
+  background: none;
+  padding: 30px;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.hmenu__box:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sticky{
+  
+  position: sticky; 
+  z-index: 2;
+  top: 0;
+  width: 100%;
+}
+
+.sticky .main {
+  padding-top: 102px;
+}
+
+footer{
+  background-color: #2c2c2c;
+  width: 100%;
+  min-height: 200px;
+  overflow: hidden;
+}
+
+main{
+  background-color: white;
+  margin: 0 20% 20% 20%;
+}
+
+footer{
+  text-align: center;
+}
+
+table{
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.main__title{
+  text-align: center;
+}
+
+.main__description{
+  margin: 0 10% 10px 10%;
+  font-size: 36px;
+}
+
+.main__film{
+  display: block;
+  font-size: 32px;
+  text-align: left;
+  margin: 0 10% 10px 10%;
+}
+
+.main__about{
+  display: flex;
+  justify-content: space-around;
+  font-size: 48px;
+  margin: 20px 10% 10px 10%;
+}
+.comments{
+  text-align: left;
+}
+.movies__item{
+  display: table;
+  clear: both;
+  padding: 5px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+}
+ul{
+  display: inline-flex;
+}
+
+.img{
+  display: table-cell;
+  position: relative;
+  width: 300px;
+  height: 450px;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 2px 20px 15px 10px;
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-right: 15px solid transparent;
+}
+
+.movies__item a {
+  padding-bottom: 10px;
+  margin: 0;
+  color: #610000;
+  text-decoration: none;
+}
+
+.author{
+  font-size: 36px;
+  color: #4f4f4f;
+}
+
+.show_more{
+  text-align: center;
+  font-size: 36px;
+  color: #aaa;
+  font-weight: bold;
+  border: none;
+  background: none;
+  opacity: 0.7;
+}
+.show_more:hover{
+  color: #000;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.link{
+  position: absolute;
+  padding-top: 10%;
+  font-size: 36px;
+  text-align: right;
+}
+
+
+.modal{ 
+  animation: bg 0.5s ease;
+  font-size: 32px;
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-right: 15px;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+@keyframes bg {
+  0% {
+    background-color: rgba(0,0,0,0.1);
+  }
+  100% {
+    background-color: rgba(0,0,0,0.8);
+  }
+}
+.modal-content{
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 600px;
+}
+
+.close{
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-content .close{
+  border: none;
+  background: none;
+  opacity: 0.7;
+}
+.modal-content .close:hover{
+  color: #000;
+  opacity: 1;
+}
+.modal__reg p{
+  display: flex;
+  justify-content: center;
+}
+.modal__login p{
+  display: flex;
+  justify-content: center;
+}
+.modal__button{
+  border: none;
+  background: none;
+  font-size: 36px;
+  padding: 0;
+}
+
+.modal {
+  margin: 0px;
+}
+
+.modal__button:hover{
+  color: #610000;
+}
+
+.modal input{
+  font-size: 36px;
+  width: 470px;
+}
+
+
+.mycheckbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.mycheckbox+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+.mycheckbox+label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #adb5bd;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+/* стили при наведении курсора на checkbox */
+.mycheckbox:not(:disabled):not(:checked)+label:hover::before {
+  border-color: #b3d7ff;
+}
+/* стили для активного состояния чекбокса (при нажатии на него) */
+.mycheckbox:not(:disabled):active+label::before {
+  background-color: #b3d7ff;
+  border-color: #b3d7ff;
+}
+/* стили для чекбокса, находящегося в фокусе */
+.mycheckbox:focus+label::before {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+.mycheckbox:focus:not(:checked)+label::before {
+  border-color: #80bdff;
+}
+/* стили для чекбокса, находящегося в состоянии disabled */
+.mycheckbox:disabled+label::before {
+  background-color: #e9ecef;
+}
+.mycheckbox:checked+label::before {
+  border-color: #0b76ef;
+  background-color: #0b76ef;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+
+.linkform:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.modal__reg fieldset input:valid:required{
+  background-color: rgba(11, 117, 239, 0.1);
+}
