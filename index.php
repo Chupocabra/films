@@ -6,20 +6,20 @@ $limit=5;
 
 <!DOCTYPE html>
 <html lang="ru">
-    <link href="styles/style.css" rel="stylesheet" type="text/css">
-    <link type="image/x-icon" rel="shortcut icon" href="images/video_kamera.png">
-    <style>
-        li {
-            list-style-type: none;
-        }
-    </style>
     <head>
+        <link href="styles/style.css" rel="stylesheet" type="text/css">
+        <link type="image/x-icon" rel="shortcut icon" href="images/video_kamera.png">
+        <style>
+            li {
+                list-style-type: none;
+            }
+        </style>
         <meta charset="utf-8">
         <title>Обзоры фильмов</title>
     </head>
     <body>
         <div  class="header" id="myHeader">
-            <div class="hlogo"><img id="myLogo" src="images\video_kamera.png"></img></div>
+            <div class="hlogo"><img id="myLogo" src="images/video_kamera.png"></img></div>
                 <div class="hmenu">
                     <div><a class="hmenu__box" href="./">Главная</a></div>
                     <div><button class="hmenu__box" id="myBtnR">Регистрация</button></div>
@@ -41,14 +41,14 @@ $limit=5;
                                     foreach ($dbh->query("SELECT * FROM review ORDER BY id DESC LIMIT $limit") as $row):
                                         ?>
                                         <div class="movies__item">
-                                            <ul>
+                                            <ul class="movies__items">
                                                 <li>
                                                     <div><img class="img" src="<?=$row['image']?>"></div>
                                                 </li>
                                                 <li>
-                                                    <a href="review/<?=$row['id']?>.php"> <?=$row['film']?> </a>
+                                                    <a href="/review.php/?id=<?=$row['id']?>"> <?=$row['film']?> </a>
                                                     <div class="author"><?=$row['author_fk'], ($row['date']) ?></div>
-                                                    <div class="link"><a href="review/<?=$row['id']?>.php">перейти к рецензии>></a></div>
+                                                    <div class="link"><a href="/review.php/?id=<?=$row['id']?>">перейти к рецензии>></a></div>
                                                 </li>
                                             </ul>
                                         </div>
@@ -82,7 +82,6 @@ $limit=5;
                 </form>
             </div>
         </div>
-
         <div id="myModalR" class="modal">
             <div class="modal-content">
                 <button class="close" id="reg_close">x</button>
@@ -105,8 +104,6 @@ $limit=5;
                 </form>
             </div>
         </div>
-        
-
-        <script src="js\script.js"></script>    
+        <script src="js/script.js"></script>
     </body> 
 </html>
