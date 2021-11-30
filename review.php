@@ -2,8 +2,8 @@
 include "./database.php";
 $id=$_GET['id'];
 $sql1="SELECT * FROM review WHERE id=$id";
-$sql2="SELECT * FROM user INNER JOIN review ON review.author=user.id";
-$sql3="SELECT * FROM comment INNER JOIN review ON review.id=comment.film_id";
+$sql2="SELECT * FROM user INNER JOIN review ON review.author=user.id WHERE review.id=$id";
+$sql3="SELECT * FROM comment INNER JOIN review ON review.id=comment.film_id WHERE review.id=$id";
 $film=$dbh->query($sql1)->fetch();
 $author=$dbh->query($sql2)->fetch();
 $comment = $dbh->query($sql3)->fetch();
