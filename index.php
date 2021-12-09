@@ -46,9 +46,9 @@ $limit=5;
                                                     <div><img class="img" src="<?=$row['image']?>"></div>
                                                 </li>
                                                 <li>
-                                                    <a href="/review.php/?id=<?=$row['id']?>"> <?=$row['film']?> </a>
+                                                    <a href="/review.php?id=<?=$row['id']?>"> <?=$row['film']?> </a>
                                                     <div class="author"><?=$row['author_fk'], ($row['date']) ?></div>
-                                                    <div class="link"><a href="/review.php/?id=<?=$row['id']?>">перейти к рецензии>></a></div>
+                                                    <div class="link"><a href="/review.php?id=<?=$row['id']?>">перейти к рецензии>></a></div>
                                                 </li>
                                             </ul>
                                         </div>
@@ -85,18 +85,19 @@ $limit=5;
         <div id="myModalR" class="modal">
             <div class="modal-content">
                 <button class="close" id="reg_close">x</button>
-                <form class="modal__reg" id="reg_window">
+                <form action="add_user.php" class="modal__reg" id="reg_window">
                     <fieldset>
                         <legend>РЕГИСТРАЦИЯ</legend>
                         <p><label for="Имя">имя<input placeholder="русские буквы" pattern="[А-Яа-яЁё  -]+" type="text" name="name" required></label></p>
                         <p><label for="E-mail">email<input type="email" name="email" required></label></p>
-                        <p><label for="Телефон">телефон<input type="number" id="phone" required></label></p>
+                        <p><label for="Телефон">телефон<input type="number" name="phone" id="phone" required></label></p>
                         <p><label for="Пароль">пароль<input placeholder="латинские буквы и цифры" class="password" pattern="(?=.*[a-z])[0-9a-zA-Z]{6,}" id="pwd1" type="password" name="pwd1" required></label></p>
                         <p><label for="Повторите пароль">повторите пароль<input class="password" id="pwd2" type="password" name="pwd2" required></label></p>    
-                        <input type="checkbox" class="mycheckbox" id="personal" required>
+                        <input type="checkbox" name="agreament" class="mycheckbox" id="personal" required>
                         <label for="personal">согласие на обработку персональных данных</label>               
                       </fieldset>
                     <p><input class="modal__button" type="submit" value="Зарегистрироваться"></p>
+<!--                    <div id="loader" class="hidden">Отправляем...</div>-->
 
                     <a id="to_log" class="linkform">
                         Вы уже зарегистрировались? Вход
@@ -105,5 +106,6 @@ $limit=5;
             </div>
         </div>
         <script src="js/script.js"></script>
+        <script src="js/form_script2.js"></script>
     </body> 
 </html>

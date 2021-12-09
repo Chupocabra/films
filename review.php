@@ -1,12 +1,24 @@
 <?php
 include "./database.php";
 $id=$_GET['id'];
-$sql1="SELECT * FROM review WHERE id=$id";
-$sql2="SELECT * FROM user INNER JOIN review ON review.author=user.id WHERE review.id=$id";
-$sql3="SELECT * FROM comment INNER JOIN review ON review.id=comment.film_id WHERE review.id=$id";
-$film=$dbh->query($sql1)->fetch();
-$author=$dbh->query($sql2)->fetch();
-$comment = $dbh->query($sql3)->fetch();
+#$sql1="SELECT * FROM review WHERE id=$id";
+$sql1 = $dbh->prepare("SELECT * FROM review WHERE id = :id");
+$sql1->bindParam(':id', $id);
+$sql1->execute();
+
+$sql2=$dbh->prepare("SELECT * FROM user INNER JOIN review ON review.author=user.id 
+WHERE review.id=:id");
+$sql2->bindParam(':id', $id);
+$sql2->execute();
+
+$sql3=$dbh->prepare("SELECT * FROM comment INNER JOIN review ON review.id=comment.film_id 
+WHERE review.id= :id");
+$sql3->bindParam(':id', $id);
+$sql3->execute();
+
+$film=$sql1->fetch();
+$author=$sql2->fetch();
+$comments = $sql3->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +74,7 @@ $comment = $dbh->query($sql3)->fetch();
     <h2>Комментарии</h2>
     <div class="comments">
         <?php
-        foreach ($dbh->query($sql3) as $comment):
+        foreach ($comments as $comment):
         ?>
         <ul>
             <li>

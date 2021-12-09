@@ -103,7 +103,6 @@ const reg_form = document.getElementById("reg_window")
 
 reg_form.onsubmit = async(e) =>{
     e.preventDefault();
-    console.log('выводим данные');
     let formData = new FormData(reg_form);
     let xhr = new XMLHttpRequest();
     xhr.open('POST', API_URL);
@@ -112,8 +111,6 @@ reg_form.onsubmit = async(e) =>{
     xhr.onload = function(){
         let response = xhr.response;
         let result = response.reg_form;
-        console.log(response)
-        console.log(result)
     }
     /*const name = reg_form.querySelector('[name="name"]'), 
     email = reg_form.querySelector('[name="email"]'); 
@@ -128,14 +125,12 @@ reg_form.onsubmit = async(e) =>{
 const log_form = document.getElementById("log_window")
 log_form.onsubmit=async (e)=>{
     e.preventDefault();
-    console.log('тут тоже данные');
     const name = log_form.querySelector('[name="email"]'), 
     email = log_form.querySelector('[name="password"]'); 
     const data = {
         name: name.value,
         email: email.value,
     };
-    console.log(data);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
