@@ -1,5 +1,6 @@
 <?php
 include "database.php";
+session_start();
 $page=isset($_GET['page']) ? $_GET['page']: 1;
 $limit=5;
  ?>
@@ -93,7 +94,7 @@ $limit=5;
                         <p><label for="Телефон">телефон<input type="number" name="phone" id="phone" required></label></p>
                         <p><label for="Пароль">пароль<input placeholder="латинские буквы и цифры" class="password" pattern="(?=.*[a-z])[0-9a-zA-Z]{6,}" id="pwd1" type="password" name="pwd1" required></label></p>
                         <p><label for="Повторите пароль">повторите пароль<input class="password" id="pwd2" type="password" name="pwd2" required></label></p>    
-                        <input type="checkbox" name="agreament" class="mycheckbox" id="personal" required>
+                        <input type="checkbox" name="agreement" class="mycheckbox" id="personal" required>
                         <label for="personal">согласие на обработку персональных данных</label>               
                       </fieldset>
                     <p><input class="modal__button" type="submit" value="Зарегистрироваться"></p>
@@ -106,6 +107,7 @@ $limit=5;
             </div>
         </div>
         <script src="js/script.js"></script>
-        <script src="js/form_script2.js"></script>
+        <script src="js/login_script.js"></script>
+        <script src="js/form_script3.js"></script>
     </body> 
 </html>
