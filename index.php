@@ -1,8 +1,15 @@
 <?php
 include "database.php";
-session_start();
+
 $page=isset($_GET['page']) ? $_GET['page']: 1;
 $limit=5;
+session_start();
+//$_SESSION=[];
+$sql3=$dbh->prepare("SELECT * FROM user WHERE user.id= :id");
+$sql3->bindParam(':id', $_SESSION['userId']);
+$sql3->execute();
+$user=$sql3->fetch();
+$_SESSION['username']=$user['username'];
  ?>
 
 <!DOCTYPE html>
@@ -23,8 +30,22 @@ $limit=5;
             <div class="hlogo"><img id="myLogo" src="images/video_kamera.png"></img></div>
                 <div class="hmenu">
                     <div><a class="hmenu__box" href="./">Главная</a></div>
-                    <div><button class="hmenu__box" id="myBtnR">Регистрация</button></div>
-                    <div><button class="hmenu__box" id="myBtnL">Вход</button></div>
+                    <div class="hmenu__box">
+                            <?php
+                            if(isset($_SESSION['userId'])){
+                                echo("Привет, $user[username]");
+                            }
+                            else echo('<button  class="hmenu__box"  id="myBtnR">Регистрация</button>');
+                            ?>
+                        </div>
+                    <div>
+                            <?php
+                            if(isset($_SESSION['userId'])){
+                                echo('<a class="hmenu__box" href="logout.php"  target="_top">Выход</a>');
+                            }
+                            else echo('<button class="hmenu__box" id="myBtnL">Вход</button>');
+                            ?>
+                        </div>
                 </div>   
         </div>
         <main class="main">
@@ -109,5 +130,14 @@ $limit=5;
         <script src="js/script.js"></script>
         <script src="js/login_script.js"></script>
         <script src="js/form_script3.js"></script>
+        <script>
+            var logout = document.getElementById("myBtnO");
+            logout.onclick = function () {
+                <?php
+                    //$_SESSION=[];
+                ?>
+                location.reload();
+            }
+        </script>
     </body> 
 </html>

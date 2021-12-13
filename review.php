@@ -19,6 +19,9 @@ $sql3->execute();
 $film=$sql1->fetch();
 $author=$sql2->fetch();
 $comments = $sql3->fetchAll();
+
+
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -38,10 +41,25 @@ $comments = $sql3->fetchAll();
 <div  class="header" id="myHeader">
     <div class="hlogo"><img id="myLogo" src="/images/video_kamera.png"></img></div>
     <div class="hmenu">
-        <div><a class="hmenu__box" href="/">Главная</a></div>
-        <div><button class="hmenu__box" id="myBtnR">Регистрация</button></div>
-        <div><button class="hmenu__box" id="myBtnL">Вход</button></div>
+        <div><a class="hmenu__box" href="./">Главная</a></div>
+        <div class="hmenu__box">
+            <?php
+            if(isset($_SESSION['userId'])){
+                echo("Привет, $_SESSION[username]");
+            }
+            else echo('<button  class="hmenu__box"  id="myBtnR">Регистрация</button>');
+            ?>
+        </div>
+        <div>
+            <?php
+            if(isset($_SESSION['userId'])){
+                echo('<a class="hmenu__box" href="logout.php"  target="_top">Выход</a>');
+            }
+            else echo('<button class="hmenu__box" id="myBtnL">Вход</button>');
+            ?>
+        </div>
     </div>
+</div>
 </div>
 <main class="main">
     <div class="detail_name"><?=$film['film']?></div>

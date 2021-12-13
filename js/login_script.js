@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+    var modal = document.getElementById("myModalL");
     const forms = document.getElementById('log_window');
     forms.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error(error))
             .then((response) => {
                 console.log(response);
+                location.reload();
                 //form.reset(); // очищаем поля формы
             })
             .catch((error) => console.error(error))

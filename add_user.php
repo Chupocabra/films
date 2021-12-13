@@ -51,11 +51,13 @@ if(empty($errors)){
     $sql->bindParam(':pwd', $pwd);
     $sql->execute();
 
-    $sth = $dbh->prepare("SELECT id FROM `user` WHERE `email` = :email");
-    $sth->bindParam(':email' , $email);
+    $sth = $dbh->prepare("SELECT * FROM `user` WHERE `email` = :email");
+    $sth->bindParam(':email' , $_POST['email']);
     $sth->execute();
-    $array = $sth->fetch(PDO::FETCH_ASSOC);
-    //$_SESSION["visit_count"] = $array;
+    $array = $sth->fetch();
+
+    $_SESSION['userId'] = $array['id'];
+    $_SESSION['username'] = $array['username'];
     echo json_encode(['success' => true]);
 }
 

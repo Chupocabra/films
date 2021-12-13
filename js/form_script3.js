@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .catch(error => console.error(error))
                 .then((response) => {
                     console.log(response);
+                    location.reload();
                     //console.log(formData);
                     //form.reset(); // очищаем поля формы
                 })
