@@ -130,14 +130,5 @@ $_SESSION['username']=$user['username'];
         <script src="js/script.js"></script>
         <script src="js/login_script.js"></script>
         <script src="js/form_script3.js"></script>
-        <script>
-            var logout = document.getElementById("myBtnO");
-            logout.onclick = function () {
-                <?php
-                    //$_SESSION=[];
-                ?>
-                location.reload();
-            }
-        </script>
     </body> 
 </html>
