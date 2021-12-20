@@ -15,7 +15,7 @@ if (!empty($_POST['rew'])) {
 } else {
     $rew = 'Нет текста обзора.';
 }
-$grade = filter_var($_POST['price'], FILTER_SANITIZE_SPECIAL_CHARS);
+$grade = filter_var($_POST['grade'], FILTER_SANITIZE_SPECIAL_CHARS);
 
 if (!empty($_FILES['poster'])) {
     $file = $_FILES['poster'];
